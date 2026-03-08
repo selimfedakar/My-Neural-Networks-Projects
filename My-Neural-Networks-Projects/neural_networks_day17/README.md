@@ -1,18 +1,13 @@
-# Character-Level RNN - Building a Text Generator
-from my perspective, lets get into it. 
-Today, I transitioned from a single RNN cell to a complete Language Model. I am now training a network to predict the next character in a sequence, effectively teaching it the "structure" of language from scratch.
+# Top-K Sampling - Filtering the Long Tail
 
-## 🔤 The Character-to-Index Pipeline
-I realized that neural networks cannot read letters; they only understand tensors.
-- **Vocabulary:** I built a unique mapping of every character in my dataset to an integer index.
-- **One-Hot Encoding vs. Embeddings:** While I used one-hot earlier, I am now moving toward a more efficient 'lookup' approach to represent my characters in a high-dimensional space.
+I have further refined my inference engine by implementing Top-K Sampling. Today, I focused on "filtering the noise" to ensure my model stays within the realm of logical possibilities while maintaining its creative flair.
 
-## 🔄 Temporal Memory (The Unrolling)
-Unlike standard networks, the RNN processes a "stream" of data.
-- **Hidden State ($h_t$):** This is the model's memory. I documented that $h_t$ is updated at every step using the current character and the memory of all previous characters.
-- **The Equation:** I am implementing the recurrence: 
-  $$h_t = \tanh(W_{ih}x_t + W_{hh}h_{t-1} + b)$$
-- **Sequence Bottleneck:** I identified that the longer the sequence, the harder it is for the "courier" (gradient) to travel back to the first character without vanishing.
 
-## 🎯 The Goal: Sampling
-Success for me today is not just a low loss, but the ability to "sample" from the model—asking it to generate a word it has never seen before based on the probability distribution it learned.
+## The "Long Tail" Problem
+I realized that even with a low temperature, the model might still assign a tiny probability to a character that makes no sense (the "long tail").
+- **The Solution:** Instead of sampling from the entire vocabulary, I only look at the **K** most likely next characters.
+- **The Filter:** I documented that we effectively set the probability of all other characters to zero (or -infinity in logits space) before the final Softmax.
+
+##  Impact on Generation
+- **K=1:** Equivalent to "Greedy Search" (always picks the best). The model becomes very repetitive.
+- **K=5 to 10:** The "Gold Standard" for balance. The model stays creative but never picks a character that is completely out of context.
