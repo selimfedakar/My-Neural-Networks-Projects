@@ -16,11 +16,11 @@ The work is documented through handwritten notes. Code supports the notes, not t
 
 ## What it is
 
-This repository is a running implementation log. Each day covers one concept from the mathematical foundations of deep learning, explained in handwritten notes and backed by working Python code.
+I decided about a year ago that I was going to learn neural networks the way they were meant to be learned — not by calling `.fit()`, but by building everything from scratch and writing down every step by hand before touching a keyboard.
 
-The path follows the architecture of modern language models: how a gradient flows, how a loss is minimized, how a model learns to generate text.
+This repository is that process, documented publicly. Every day I picked one concept, worked through it in my notebook until it made sense to me, then implemented it in Python to prove it. No shortcuts. The math first, then the code.
 
-The main reference is Andrej Karpathy's lecture series on neural networks and language models.
+I followed Andrej Karpathy's lecture series as the backbone, but the thinking in the notes is mine — the questions I got stuck on, the analogies I invented to make things click, the moments where I realized I had been wrong about something.
 
 ---
 
