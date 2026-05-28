@@ -32,28 +32,17 @@ The notes are not summaries of what I read. They are the place where I worked th
 
 ---
 
-## Learning map
+## What I worked on
 
-| Day | Topic | Core concept |
-|-----|-------|-------------|
-| General | Autograd Engine & Backpropagation | Scalar `Value` class, computation graph, chain rule |
-| 2 | Neural Network Core | Neuron → Layer → MLP from scratch |
-| 3 | Training Loop | Forward pass, loss, `.backward()`, parameter update |
-| 4 | Modularization & Gradient Descent | Automated parameter collection, full GD loop |
-| 5 | Bigram Language Model | Character-level NLP, frequency counting, probabilistic sampling |
-| 6 | Broadcasting & Vectorized Evaluation | Eliminating Python loops, tensor broadcasting rules |
-| 7 | One-Hot Encoding | Why raw integers bias the model, the identity principle |
-| 8 | Softmax & Numerical Stability | Log-Sum-Exp trick, NLL loss, production-level loss functions |
-| 9 | MLP & Sliding Context Window | Embedding lookup table, block size, concatenation challenge |
-| 10 | ML Best Practices | Train / val / test split, diagnosing underfitting |
-| 11 | Weight Initialization | Dead tanh problem, why bad init destroys learning |
-| 12 | Manual Backpropagation | Courier analogy, gradient flow through each op by hand |
-| 13 | Kaiming Initialization | Fan-in scaling, calibrating signal variance |
-| 14 | Batch Normalization | 2015 Google innovation, internal covariate shift |
-| 15 | Residual Networks | Skip connections, vanishing gradient solution |
-| 16 | Diagnostic Dashboard | Activation histograms, gradient flow visualization |
-| 17 | Character-Level RNN | Hidden state, recurrence equation, text generation |
-| 19 | Extended implementations | Additional architectural experiments |
+I started from the very bottom — building a scalar autograd engine by hand, implementing the chain rule myself before ever touching PyTorch. From there I built a full neuron, layer, and MLP structure from scratch, wiring up the training loop manually so I understood exactly what `.backward()` is actually doing under the hood.
+
+Once the foundations were solid, I moved into language modeling. I implemented a Bigram character model, then replaced it with an MLP using a sliding context window and an embedding lookup table. Along the way I worked through the details that most tutorials skip: why one-hot encoding biases the model, how the Log-Sum-Exp trick prevents softmax from exploding, how to split data properly and diagnose underfitting before touching hyperparameters.
+
+The deeper I went, the more I focused on what breaks models internally. I went through weight initialization failures — the dead tanh problem, why a poorly scaled init can flatline a network before training even starts — then derived Kaiming initialization from first principles. I implemented Batch Normalization and Residual connections not as black-box layers but by understanding why they were invented and what problem each one solves.
+
+I also built a diagnostic dashboard to visualize activation distributions and gradient flow across layers, which changed how I think about debugging neural networks entirely.
+
+The current focus is Recurrent Networks — I have a working character-level RNN that generates text, and I am working through the sequence modeling fundamentals before moving to Transformers.
 
 ---
 
