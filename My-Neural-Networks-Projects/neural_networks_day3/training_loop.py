@@ -181,7 +181,7 @@ print(f"Final Predictions: {[round(p.data, 3) for p in ypred]}")
 #I solved a exception and why did this happen?
 #When I call sum([Value(1), Value(2)]), Python internally does this:
 #result = 0 (integer)
-#result = result + Value(1) ➡️ CRASH! An integer doesn't know how to add a Value.
+#result = result + Value(1) -> CRASH! An integer doesn't know how to add a Value.
 #By adding __radd__, I am making my Value class "smart" enough to handle being on either side of the + sign.
 
-#now its perfectly working 
+#now its perfectly working
