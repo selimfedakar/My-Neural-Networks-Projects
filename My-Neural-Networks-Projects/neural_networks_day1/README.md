@@ -1,32 +1,47 @@
-# Neural Networks General — Foundation Reference
+# Day 1: The Heart of Autograd & Backpropagation
 
-This folder is the starting point of the repository. It contains the core building blocks that everything else builds on.
+This is where the repository starts. On Day 1 I built the connective tissue of every deep
+learning library — a scalar autograd engine — so that I understand backpropagation from the
+ground up, not as a black box.
 
-## Contents
+## My Notes
+![Notes Page 1](notes/page1.jpg)
+![Notes Page 2](notes/page2.jpg)
 
-| File | Description |
-|------|-------------|
-| `karpathy_nn_foundation.py` | Reference guide based on Andrej Karpathy's micrograd lecture |
-| `micrograd_lite.py` | Original scalar autograd engine (study copy) |
+My handwritten study of the computation graph, the chain rule, and the Multi-Layer Perceptron.
+
+## What I Built
+I implemented a lightweight scalar autograd engine, inspired by Andrej Karpathy's micrograd:
+- **Value class:** a custom object that stores a scalar, its gradient, and the operation that produced it.
+- **Computation graph:** built with `_prev` and `_op`, so every value remembers its own history.
+- **Backpropagation:** I wrote `backward()` to apply the chain rule automatically, in reverse topological order.
+- **Activation:** I added `tanh` for non-linearity, exactly as in my notes on a single neuron.
+
+## The Six Ideas This Makes Concrete
+1. A derivative is the slope of a function at a point — how much the output moves when I nudge the input.
+2. Every operation (add, mul, tanh) has a simple local gradient rule.
+3. The chain rule connects those local rules from the output all the way back to the inputs.
+4. Topological sort guarantees the backward order is correct — children before parents, reversed.
+5. A neural network is just one big mathematical expression; the loss is the scalar I differentiate.
+6. Gradient descent is `weight -= lr * weight.grad`, repeated until the loss is small.
+
+## Manual Backprop (Backprop Ninja)
+In `manual_backprop_ninja.py` I differentiate a full MLP by hand — every gradient
+(`dlogprobs`, `dprobs`, `dcounts`, ...) written out step by step — to prove I can do
+what `Value.backward()` does automatically. This is the exercise that made backprop click for me.
+
+## Files
+| File | What it is |
+|------|-----------|
+| `micrograd_lite.py` | My original scalar autograd engine (study copy) |
 | `micrograd_litec.py` | Refactored version — cleaner ops, `__repr__`, `math.tanh` |
+| `karpathy_nn_foundation.py` | Reference distilled from Karpathy's micrograd lecture |
+| `manual_backprop_ninja.py` | Manual backprop of a full MLP, written out by hand |
 
-## What is this?
-
-`karpathy_nn_foundation.py` is a personal reference file distilled from Andrej Karpathy's [micrograd](https://github.com/karpathy/micrograd) lecture and notebook. The code structure, pedagogy, and core ideas belong entirely to him (MIT License). It is kept here as a permanent mental model — the clearest possible explanation of how neural networks actually work at the lowest level.
-
-**Six ideas this file makes concrete:**
-
-1. A derivative is just the slope of a function at a point — how much the output changes when you nudge the input
-2. Every operation (add, mul, tanh) has a simple local gradient rule
-3. Chain rule connects those local rules from the output all the way back to the inputs
-4. Topological sort ensures backward order is correct — children before parents, reversed
-5. A neural network is just a big mathematical expression — loss is the scalar we differentiate
-6. Gradient descent: `weight -= lr * weight.grad`, repeated until loss is small
-
-## Why it starts here
-
-The rest of this repository builds directly on these six ideas. Every day's code — from bigram models to batch normalization to RNNs — is an extension of what `Value.backward()` does in 15 lines.
+## Why It Starts Here
+Everything else in this repo — bigram models, batch normalization, RNNs — is an extension
+of what `Value.backward()` does in about 15 lines. I wanted that foundation to be mine
+before moving on.
 
 ---
-
-*Code and pedagogy: Andrej Karpathy — [Neural Networks: Zero to Hero](https://github.com/karpathy/nn-zero-to-hero)*
+*Code and pedagogy for micrograd: Andrej Karpathy — [Neural Networks: Zero to Hero](https://github.com/karpathy/nn-zero-to-hero) (MIT License).*
