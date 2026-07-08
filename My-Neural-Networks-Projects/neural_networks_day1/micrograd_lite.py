@@ -68,7 +68,7 @@ class Value:
 
             # --- Verification with handwritten notes ---
             # Initializing variables from your study notes
-            
+
 a = Value(2.0, label='a')
 b = Value(-3.0, label='b')
 c = Value(10.0, label='c')
