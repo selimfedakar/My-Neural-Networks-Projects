@@ -21,8 +21,8 @@ test_indices  = indices[n2:]
 
 # 2. HYPERPARAMETER SEARCH (The 'Dev' Bucket Logic)
 # Two options to fix the underfitting diagnosed earlier:
-#   Model A: Small (~3.5k parameters) — the one currently underfitting
-#   Model B: Large (increased hidden layer size) — more capacity to capture patterns
+# Model A: Small (~3.5k parameters) — the one currently underfitting
+# Model B: Large (increased hidden layer size) — more capacity to capture patterns
 
 def simulate_training_run(model_name):
     """Returns simulated dev-set loss — stand-in for a real training run."""

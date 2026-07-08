@@ -1,9 +1,9 @@
 import torch
 
 # "I am taking original X and y and splitting them into 3 buckets."
-#   tr  = training set   (80%) → to calculate gradients and update weights
-#   dev = validation set (10%) → to tune hyperparameters
-#   te  = test set       (10%) → to evaluate final performance (touch only once)
+# tr  = training set   (80%) → to calculate gradients and update weights
+# dev = validation set (10%) → to tune hyperparameters
+# te  = test set       (10%) → to evaluate final performance (touch only once)
 
 
 # 1. Simulating a Split (80/10/10)
