@@ -1,6 +1,6 @@
 # Day 12: Manual Backpropagation & The Courier Analogy
 
-## 📸 My Notes
+## My Notes
 ![Manual Backprop & Tanh](notes/page1.png)
 
 I have moved beyond simply calling `.backward()` and started deconstructing the mathematical journey of a gradient. I now view backpropagation not as a black box, but as a precise delivery system where every neuron must pass a message to the next.
