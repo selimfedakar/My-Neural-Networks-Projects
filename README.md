@@ -1,7 +1,7 @@
 # My Neural Networks Projects
 
 <p align="center">
-  <img src="My-Neural-Networks-Projects/notes/page1.jpg" width="540" alt="Handwritten notes — Day 1" />
+  <img src="My-Neural-Networks-Projects/neural_networks_day16/notes/page1.png" width="460" alt="Handwritten notes — Day 16, diagnostics & gradient flow" />
 </p>
 
 <p align="center"><i>Every concept handwritten first. Then implemented.</i></p>
